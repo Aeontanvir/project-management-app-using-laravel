@@ -10,7 +10,7 @@
                 <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
             </div>
 
-            <a class="btn btn-sm btn-primary pull-right" href="/projects/create">Add Project</a>
+            <a class="btn btn-sm btn-primary pull-right" href="/projects/create/{{$company->id}}">Add Project</a>
             <hr size="30">
 
             <div class="row">
@@ -18,7 +18,7 @@
                 <div class="col-md-4">
                     <h2>{{$project->name}}</h2>
                     <p>{{ str_limit($project->description, 200 ) }}</p>
-                    <p><a class="btn btn-primary" href="projects/{{$project->id}}" role="button">View details &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="/projects/{{$project->id}}" role="button">View details &raquo;</a></p>
                 </div>
                 @endforeach
             </div>
