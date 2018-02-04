@@ -11,29 +11,66 @@
             </div>
 
             <a class="btn btn-sm btn-primary pull-right" href="/projects/create">Add Project</a>
-            <hr size="30">
+            <span class="clearfix">
+            <br/>
+            <hr/>
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <form method="post" action="{{ route('comments.store') }}">
+                        {{ csrf_field() }}
 
-            {{-- <div class="row">
-                @foreach($project->projects as $project)
-                <div class="col-md-4">
-                    <h2>{{$project->name}}</h2>
-                    <p>{{ str_limit($project->description, 200 ) }}</p>
-                    <p><a class="btn btn-primary" href="projects/{{$project->id}}" role="button">View details &raquo;</a></p>
+
+                        <input type="hidden" name="commentable_type" value="App\Models\Project">
+                        <input type="hidden" name="commentable_id" value="{{$project->id}}">
+
+
+                        <div class="form-group">
+                            <label for="comment-content">Comment</label>
+                            <textarea placeholder="Enter comment" 
+                                    style="resize: vertical" 
+                                    id="comment-content"
+                                    name="body"
+                                    rows="3" spellcheck="false"
+                                    class="form-control autosize-target text-left">
+                                    </textarea>
+                        </div>
+
+                    
+                        <div class="form-group">
+                            <label for="comment-content">Proof of work done (Url/Photos)</label>
+                            <textarea placeholder="Enter url or screenshots" 
+                                    style="resize: vertical" 
+                                    id="comment-content"
+                                    name="url"
+                                    rows="2" spellcheck="false"
+                                    class="form-control autosize-target text-left">
+
+                                    
+                                    </textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary"
+                                value="Submit"/>
+                        </div>
+                    </form>
                 </div>
-                @endforeach
-            </div> --}}
+                
+            </div>
+            
+
+
+            
         </div>
         <div class="col-sm-3">
-            <!-- <div class="sidebar-module sidebar-module-inset">
-                <h4>About</h4>
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            </div> -->
             <div class="sidebar-module">
                 <h4>Action</h4>
                 <ol class="list-unstyled">
-                    <li><a href="/projects/{{$project->id}}/edit">Edit</a></li>
+                    <li><a href="/projects/{{$project->id}}/edit">Edit Project</a></li>
                     <li><a href="/projects/create">Create new project</a></li>
                     <li><a href="/projects">All Projects</a></li>
+                    @if($project->user_id == Auth::user()->id)
                     <li><a href="#" 
                         onclick="
                             var result = confirm('Are you sure tou wish to delete this Project');
@@ -56,6 +93,7 @@
                             {{ csrf_field() }}
                         </form>
                     </li>
+                    @endif
                     <li><a href="/projects/create">Add Project</a></li>
                     <!-- <li><a href="#">Add new member</a></li> -->
                 </ol>

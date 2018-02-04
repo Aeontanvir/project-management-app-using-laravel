@@ -6,20 +6,21 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-10 ">
+                    <h1>Update Project</h1>
                     <form
                         method="POST"
-                        action="{{route('companies.update', [$company->id])}}"
+                        action="{{route('projects.update', [$project->id])}}"
                     >
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
                             <label for="name">Comapny Name</label>
-                            <input type="text" required name="name" class="form-control" id="name" value="{{$company->name}}">
+                            <input type="text" required name="name" class="form-control" id="name" value="{{$project->name}}">
                         </div>
                         
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control" required name="description" rows="5" id="description">{{$company->description}}</textarea>
+                            <textarea class="form-control" required name="description" rows="5" id="description">{{$project->description}}</textarea>
                         </div>
                         <hr/>
                         <div class="pull-right">
@@ -42,8 +43,8 @@
             <div class="sidebar-module">
                 <h4>Action</h4>
                 <ol class="list-unstyled">
-                    <li><a href="/companies/{{$company->id}}">View Company</a></li>
-                    <li><a href="/companies">All Company</a></li>
+                    <li><a href="/projects/{{$project->id}}">View Project</a></li>
+                    <li><a href="/projects">All Project</a></li>
                 </ol>
             </div>
             <!-- <div class="sidebar-module">

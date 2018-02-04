@@ -12,15 +12,43 @@
                         action="{{route('projects.store')}}"
                     >
                         {{ csrf_field() }}
-                        <input type="hidden"
-                                name="company_id" 
-                                value="{{$company_id}}">
+                        @if($companies == null)
+                            <input   
+                            class="form-control"
+                            type="hidden"
+                                    name="company_id"
+                                    value="{{ $company_id }}"
+                                    />
+                            </div>
 
+                        @endif
+
+                        @if($companies != null)
+                        <div class="form-group">
+                            <label for="company-content">Select company</label>
+
+                            <select name="company_id" class="form-control" > 
+
+                            @foreach($companies as $company)
+                                    <option value="{{$company->id}}"> {{$company->name}} </option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        @endif
                         <div class="form-group">
                             <label for="name">Project Name</label>
                             <input type="text" 
                                 required 
                                 name="name" 
+                                class="form-control" 
+                                id="name" 
+                                value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Duration</label>
+                            <input type="number" 
+                                required 
+                                name="days" 
                                 class="form-control" 
                                 id="name" 
                                 value="">
