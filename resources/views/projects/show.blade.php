@@ -14,55 +14,12 @@
             <span class="clearfix">
             <br/>
             <hr/>
-            <div class="panel panel-info">
-                <div class="panel-body">
-                    <form method="post" action="{{ route('comments.store') }}">
-                        {{ csrf_field() }}
 
-
-                        <input type="hidden" name="commentable_type" value="App\Models\Project">
-                        <input type="hidden" name="commentable_id" value="{{$project->id}}">
-
-
-                        <div class="form-group">
-                            <label for="comment-content">Comment</label>
-                            <textarea placeholder="Enter comment" 
-                                    style="resize: vertical" 
-                                    id="comment-content"
-                                    name="body"
-                                    rows="3" spellcheck="false"
-                                    class="form-control autosize-target text-left">
-                                    </textarea>
-                        </div>
-
-                    
-                        <div class="form-group">
-                            <label for="comment-content">Proof of work done (Url/Photos)</label>
-                            <textarea placeholder="Enter url or screenshots" 
-                                    style="resize: vertical" 
-                                    id="comment-content"
-                                    name="url"
-                                    rows="2" spellcheck="false"
-                                    class="form-control autosize-target text-left">
-
-                                    
-                                    </textarea>
-                        </div>
-
-
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary"
-                                value="Submit"/>
-                        </div>
-                    </form>
-                </div>
-                
-            </div>
-            
-
-
-            
+            @include('partials.comments', array('commentable_type'=>'App\Models\Project', 'commentable_id'=>$project->id))
         </div>
+
+
+
         <div class="col-sm-3">
             <div class="sidebar-module">
                 <h4>Action</h4>

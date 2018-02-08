@@ -14,21 +14,16 @@ class Project extends Model
         'user_id'
     ];
 
-    // has some query
-    public function tasks() {
-        return $this->hasMany('App\Models\Task');
+    public function users(){
+		return $this->belongsToMany('App\Models\User');
+    }  
+
+    public function company(){
+		return $this->belongsTo('App\Models\Company');
     }
 
-    public function company() {
-        return $this->belongsTo('App\Models\Company');
-    }
-
-    public function users() {
-        return $this->belongsToMany('App\Models\User');
-    }
-
-    public function comments(){
+    public function comments()
+    {
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
-    
 }
